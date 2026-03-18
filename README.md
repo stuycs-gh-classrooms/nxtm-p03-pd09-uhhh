@@ -27,13 +27,12 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: Tension
+#### Custom Force: Centriputal force
 
 ### Custom Force Formula
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-Tension = mg/cos(theta) where m is the mass, g is gravity, and theta is the angle created between the vertical line and the string itself.
-
+Force = mv^2/r where m is mass, v is the velocity and r is the distance between the orbs.
 ### Custom Force Breakdown
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
 Gravity and mass.
@@ -43,7 +42,7 @@ No
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
 No
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-Based on the tension and how close the orbs are to eachother, the gravity will either attract or repel the other orb. 
+Based on the gravity and how close the orbs are to eachother and the fixed  orb, there will be rotation and centripal. 
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
 No
@@ -51,13 +50,12 @@ No
 
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
-
+Give each orb its own gravity and it will replicate centriputal force.
 --- 
 
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
 
 --- 
 
