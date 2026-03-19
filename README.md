@@ -27,7 +27,7 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: Centriputal force
+#### Custom Force: Centripetal force
 
 ### Custom Force Formula
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
@@ -68,19 +68,16 @@ We are going to make the center orb have greater mass and gravitational force. M
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
-
+simulate drag by slowing down each orb based on its velocity. The faster the orb moves, the stronger the drag force applied in the opposite direction
 --- 
 
-### Simulation 4: Custom force
+### Simulation 4: centripetal force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
-
+apply centripetal force to each orb so they move in circular paths around a central point or another orb. The force will always point toward the center, keeping the orb in rotation
 --- 
 
 ### Simulation 5: Combination
-Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
-
+combine gravity, spring force, drag, and centripetal force together. Orbs will be attracted to each other while also experiencing resistance from drag and controlled rotation from centripetal force
 YOUR ANSWER HERE
 
