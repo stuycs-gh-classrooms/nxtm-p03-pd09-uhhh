@@ -47,7 +47,7 @@ What is the formula for your force? Including descriptions/definitions for the s
 - r	Distance between the centers of the two charges (in meters, m)
 
 
-- What information that is already present in the `Orb` or `OrbNode` classes does this force use?
+What information that is already present in the `Orb` or `OrbNode` classes does this force use?
 
 Radius, the distance between two orbs. 
 - Does this force require any new constants, if so what are they and what values will you try initially?
