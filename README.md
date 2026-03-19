@@ -35,7 +35,7 @@ What is the formula for your force? Including descriptions/definitions for the s
  F=k∣q1q2∣r2
 F	Electrostatic force (in Newtons, N)
 k	Coulomb's constant, approximately 8.987×109 N m2/C2
-8.987×109N m2/C2
+8.987×10^9N m^2/C^2
 q1​	Charge of the first object (in Coulombs, C)
 q2​	Charge of the second object (in Coulombs, C)
 r	Distance between the centers of the two charges (in meters, m)
@@ -50,7 +50,7 @@ No
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
 
-k	Coulomb's constant, approximately 8.987×109 N m2/C2
+k	Coulomb's constant, approximately 8.987×10^9 N m^2/C^2
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
 - 
