@@ -80,6 +80,7 @@ simulate drag by slowing down each orb based on its velocity. The faster the orb
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
 apply centripetal force to each orb so they move in circular paths around a central point or another orb. The force will always point toward the center, keeping the orb in rotation
+
 --- 
 
 ### Simulation 5: Combination
