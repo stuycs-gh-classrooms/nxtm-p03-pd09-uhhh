@@ -32,7 +32,8 @@ All projects will require the following:
 ### Custom Force Formula
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
- F=k∣q1q2∣r2
+ F=k∣q1q2∣r^2
+ 
 F	Electrostatic force (in Newtons, N)
 k	Coulomb's constant, approximately 8.987×109 N m2/C2
 8.987×10^9N m^2/C^2
