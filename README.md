@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/OwTRjgv_)
 ## Project 00
 ### NeXTCS
-### Period: 09
+### Period: 
 ## Thinker0: Samaun Asaf
 ## Thinker1: Erick Lin
 ## Thinker2: Iree Zheng
@@ -32,40 +32,47 @@ All projects will require the following:
 ### Custom Force Formula
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-Force = mv^2/r where m is mass, v is the velocity and r is the distance between the orbs.
-### Custom Force Breakdown
+ F=k∣q1q2∣r2
+F	Electrostatic force (in Newtons, N)
+k	Coulomb's constant, approximately 8.987×109 N m2/C2
+8.987×109N m2/C2
+q1​	Charge of the first object (in Coulombs, C)
+q2​	Charge of the second object (in Coulombs, C)
+r	Distance between the centers of the two charges (in meters, m)
+
+
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
 
-mass, velocity and radius
-
+Radius, the distance between two orbs. 
 - Does this force require any new constants, if so what are they and what values will you try initially?
 
 No
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
 
-No
+k	Coulomb's constant, approximately 8.987×109 N m2/C2
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-Based on the gravity and how close the orbs are to eachother and the fixed  orb, there will be rotation and centripal. 
+- 
+Yes, based on the charges. The orbs will each be given a charge based on the mass, then the electorstatic force will be calculated based on those charges.
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
-  
-No
+
+Yes, we would need to find the force of each orb. 
 
 --- 
 
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion
 
-Give each orb its own gravity and it will replicate centriputal force.
+Give each orb a unique charge. Then use the coulobm's formula to find the force presented. This force will replicate the simultaion of an orbital motion. 
 
 --- 
 
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-We are going to make the center orb have greater mass and gravitational force. Making other orbs mainly rotate around the main orb, others rotating depending on the random mass and gravitational force
+We will use the spring to represent the distance between the center of each orb, compress and extend depending on the condition. 
 
 --- 
 
@@ -76,13 +83,13 @@ simulate drag by slowing down each orb based on its velocity. The faster the orb
 
 --- 
 
-### Simulation 4: centripetal force
+### Simulation 4: Electro Static Force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-apply centripetal force to each orb so they move in circular paths around a central point or another orb. The force will always point toward the center, keeping the orb in rotation
+Orbs with the same charges repel, oppsite attract. 
 
 --- 
 
 ### Simulation 5: Combination
-combine gravity, spring force, drag, and centripetal force together. Orbs will be attracted to each other while also experiencing resistance from drag and controlled rotation from centripetal force
+Combine gravity, spring force, drag, and electro static force together. Orbs will be attracted/repel to each other based on the charge and also experiencing resistance from drag.
 
