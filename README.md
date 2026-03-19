@@ -61,6 +61,7 @@ Give each orb its own gravity and it will replicate centriputal force.
 
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
+
 We are going to make the center orb have greater mass and gravitational force. Making other orbs mainly rotate around the main orb, others rotating depending on the random mass and gravitational force
 
 --- 
@@ -69,6 +70,7 @@ We are going to make the center orb have greater mass and gravitational force. M
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
 
 simulate drag by slowing down each orb based on its velocity. The faster the orb moves, the stronger the drag force applied in the opposite direction
+
 --- 
 
 ### Simulation 4: centripetal force
@@ -79,5 +81,4 @@ apply centripetal force to each orb so they move in circular paths around a cent
 
 ### Simulation 5: Combination
 combine gravity, spring force, drag, and centripetal force together. Orbs will be attracted to each other while also experiencing resistance from drag and controlled rotation from centripetal force
-YOUR ANSWER HERE
 
