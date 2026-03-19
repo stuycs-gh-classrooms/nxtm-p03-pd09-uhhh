@@ -50,13 +50,16 @@ No
 Based on the gravity and how close the orbs are to eachother and the fixed  orb, there will be rotation and centripal. 
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
-- 
+  
 No
+
 --- 
 
 ### Simulation 1: Gravity
-Describe how you will attempt to simulate orbital motion'
+Describe how you will attempt to simulate orbital motion
+
 Give each orb its own gravity and it will replicate centriputal force.
+
 --- 
 
 ### Simulation 2: Spring
