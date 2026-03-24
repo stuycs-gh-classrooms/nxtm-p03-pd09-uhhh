@@ -94,19 +94,20 @@ calculates the drag force that pushes opposite the direction of motion
    calculates the gravitational force from another orb
     exists so one orb can pull another based on mass and distance
    */
-  PVector getGravity(Orb other, float G)
-  {
-    float strength = G * mass*other.mass;
-    //dont want to divide by 0!
-    float r = max(center.dist(other.center), MIN_SIZE);
-    strength = strength/ pow(r, 2);
-  PVector force = PVector.sub(other.center, center);// added a unit direction vector, then multiply by force
+PVector getGravity(Orb other, float G)
+{
+  float strength = G * mass*other.mass;
+  float r = max(center.dist(other.center), MIN_SIZE);
+  strength = strength / pow(r, 2);
+
+  PVector force = PVector.sub(other.center, center);
   force.normalize();
   force.mult(strength);
-  return force;
+
   println("GRAV | r:", r, "strength:", strength, "force:", force);
 
-  }
+  return force;
+}
 
   /**
    getSpring()
@@ -145,7 +146,7 @@ PVector getSpring(Orb other, int springLength, float springK)
 
   direction.mult(mag);
   return direction;
-}g
+}
 
 
 
