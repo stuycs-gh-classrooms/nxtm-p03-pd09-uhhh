@@ -27,15 +27,14 @@
  ----------------------------------------------- */
 
 
-int NUM_ORBS = 10;
+int NUM_ORBS = 15;
 int MIN_SIZE = 10;
 int MAX_SIZE = 60;
 float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
-float QC_COEF = 2;
-
+float C_NUM = 9;
 
 
 int SPRING_LENGTH = 50;
@@ -45,7 +44,7 @@ int MOVING = 0;
 int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
-int QC = 4;
+int ESTATIC = 4;
 
 boolean[] toggles = new boolean[5];
 String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Electro Static"};
@@ -97,7 +96,21 @@ void draw()
         PVector df = orbs[o].getDragForce(D_COEF);
         orbs[o].applyForce(df);
       }
-    }//gravity, drag
+
+      if (toggles[ESTATIC]) {
+        PVector ef = new PVector ();
+        for (int p = 1; p<orbCount; o++) {
+          PVector es0 = orbs[o].getStatic(orbs[p-1], C_NUM);
+          PVector es1 = orbs[o].getStatic(orbs[p-1], C_NUM);
+          if (p==1) {
+            ef = es0.add(es1);
+          }
+          ef = ef.add(es1);
+        }
+
+        orbs[o].applyForce(ef);
+      }
+    }//gravity, drag, electro static
 
     for (int o = 0; o < orbCount; o++) {
       orbs[o].move(toggles[BOUNCE]);
@@ -288,10 +301,10 @@ void keyPressed()
   }
 
   if (key == 'q') {
-    if (toggles[QC] == true) {
-      toggles [QC] = false;
+    if (toggles[ESTATIC] == true) {
+      toggles [ESTATIC] = false;
     } else {
-      toggles[QC] = true;
+      toggles[ESTATIC] = true;
     }
   }
   if (key == '1') {
@@ -305,11 +318,11 @@ void keyPressed()
 
 
   if (key == '-') {
-    orbCount = orbCount - 1;
+    orbCount--;
   }//removal
   if (key == '=' || key == '+') {
     //Part 4: Write addOrb() below
-    addOrb();
+    orbCount++;
   }//addition
 }//keyPressed
 
