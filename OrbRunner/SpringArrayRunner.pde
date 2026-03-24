@@ -83,9 +83,10 @@ void draw()
     //part 3: apply other forces if toggled on
     for (int o = 0; o < orbCount; o++) {
       if (toggles[GRAVITY]) {
-        PVector gf = new PVector(0, 0.3 * orbs[o].mass);// changed so that they fall down and not towards the fixed orb
+        //PVector gf = new PVector(0, 0.3 * orbs[o].mass);// changed so that they fall down and not towards the fixed orb
+        PVector gf = orbs[o].getGravity(orbs[0],G_CONSTANT);
         orbs[o].applyForce(gf);
-      }
+      } 
 
       if (toggles[DRAGF]) {
         PVector df = orbs[o].getDragForce(D_COEF);

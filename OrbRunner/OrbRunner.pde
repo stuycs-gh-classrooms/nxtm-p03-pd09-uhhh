@@ -7,6 +7,7 @@ class Orb
   PVector acceleration;
   float bsize;
   float mass;
+  float charge;
   color c;
 
 
@@ -20,6 +21,7 @@ makes an orb with random size, position, and mass
     float y = random(bsize/2, height-bsize/2);
     center = new PVector(x, y);
     mass = random(10, 100);
+    charge = random(-50,50);
     velocity = new PVector();
     acceleration = new PVector();
     setColor();
@@ -148,7 +150,20 @@ PVector getSpring(Orb other, int springLength, float springK)
   return direction;
 }
 
+PVector getStatic(Orb other, float C)
+{
+  float strength = C * charge*other.charge;
+  float r = max(center.dist(other.center), MIN_SIZE);
+  strength = strength / pow(r, 2);
 
+  PVector force = PVector.sub(other.center, center);
+  force.normalize();
+  force.mult(strength);
+
+  println("Electrostatic | r:", r, "strength:", strength, "force:", force);
+
+  return force;
+}
 
   /**
   checks for bounce against the top and bottom walls
