@@ -192,6 +192,8 @@ void applySprings()
     current.applyForce(force1);
     next.applyForce(force2);
   }
+  println("SPRING | dist:", distance, "disp:", displacement, "force:", direction);
+
 }//applySprings
 
 
