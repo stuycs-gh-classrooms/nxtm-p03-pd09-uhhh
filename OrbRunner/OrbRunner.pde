@@ -123,14 +123,23 @@ calculates the drag force that pushes opposite the direction of motion
    calculates the spring force between this orb and another orb.
     pulls when stretched and pushes when compressed.
    */
-  PVector getSpring(Orb other, int springLength, float springK)
-  {
-    PVector direction = PVector.sub(other.center, this.center);
-    float displacement = this.center.dist(other.center) - springLength;
-    float mag = springK * displacement;
-    direction.mult(mag);
-    return direction;
-  }//getSpring
+PVector getSpring(Orb other, int springLength, float springK)
+{
+  PVector direction = PVector.sub(other.center, this.center);
+  float distance = direction.mag();
+
+  if (distance == 0) {
+    return new PVector();
+  }
+
+  direction.normalize();//addded this, so when the spring force gets way too large when the orbs are far apart. That can make the whole chain collapse or act weird
+
+  float displacement = distance - springLength;
+  float mag = springK * displacement;
+
+  direction.mult(mag);
+  return direction;
+}g
 
 
 
