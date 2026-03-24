@@ -66,7 +66,7 @@ void draw()
   displayMode();
 
   //draw the orbs and springs
-  for (int o=0; o < orbCount; o++) {
+  for (int o = 0; o < orbCount; o++) {
     orbs[o].display();
 
     //Part 1: write drawSpring below
@@ -81,18 +81,19 @@ void draw()
     applySprings();
 
     //part 3: apply other forces if toggled on
-    for (int o=0; o < orbCount; o++) {
+    for (int o = 0; o < orbCount; o++) {
       if (toggles[GRAVITY]) {
-        PVector gf = orbs[o].getGravity(earth, G_CONSTANT);
+        PVector gf = new PVector(0, 0.3 * orbs[o].mass);// changed so that they fall down and not towards the fixed orb
         orbs[o].applyForce(gf);
       }
+
       if (toggles[DRAGF]) {
         PVector df = orbs[o].getDragForce(D_COEF);
         orbs[o].applyForce(df);
       }
     }//gravity, drag
 
-    for (int o=0; o < orbCount; o++) {
+    for (int o = 0; o < orbCount; o++) {
       orbs[o].move(toggles[BOUNCE]);
     }
   }//moving
@@ -191,15 +192,14 @@ void applySprings()
 
     current.applyForce(force1);
     next.applyForce(force2);
-     PVector diff = PVector.sub(next.center, current.center);// direction from one orb
+    PVector diff = PVector.sub(next.center, current.center);// direction from one orb
     float dist = diff.mag();//how far apart they are
     float displacement = dist - SPRING_LENGTH;//stretched or compressed the string is
 
- //   println("SPRING | dist:", dist, "disp:", displacement, "force:", force1);
-  
-
-}
+       println("SPRING | dist:", dist, "disp:", displacement, "force:", force1);
+  }
 }//applySprings
+
 
 
 /**
@@ -208,7 +208,7 @@ void applySprings()
  Add an orb to the arry of orbs.
  
  If the array of orbs is full, make a
- new, larger array 
+ new, larger array
  that contains all
  the current orbs
  and the new one.
@@ -221,17 +221,17 @@ void addOrb()
   //copy the old orbs into the new array； look at ref for arrayCopy
   arrayCopy(orbs, newOrbs);
 
-float s = 30;
-float m = 50;
-//place of last orb; I had it at random, but it sends all the orbs flying
-//sometimes it becomes
+  float s = 30;
+  float m = 50;
+  //place of last orb; I had it at random, but it sends all the orbs flying
+  //sometimes it becomes
   Orb lastOrb = orbs[orbCount - 1];
   float x = lastOrb.center.x + SPRING_LENGTH;
   float y = lastOrb.center.y;
 
 
 
-// adds new orb
+  // adds new orb
   newOrbs[orbCount] = new Orb(x, y, s, m);
 
   // switch to the new array
