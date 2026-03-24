@@ -94,8 +94,11 @@ simulate drag by slowing down each orb based on its velocity. The faster the orb
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
 Orbs with the same charges repel, oppsite attract. 
+
 Add charge
+
 Add getElectricForce()
+
 Add applyElectricForces()
 
 --- 
