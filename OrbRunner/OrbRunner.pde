@@ -56,6 +56,8 @@ and/or
     velocity.add(acceleration);
     center.add(velocity);
     acceleration.mult(0);
+  println("MOVE | pos:", center, "vel:", velocity, "acc:", acceleration);
+
   }//move
 
 
@@ -68,6 +70,8 @@ heavier = less force
     PVector scaleForce = force.copy();
     scaleForce.div(mass);
     acceleration.add(scaleForce);
+  println("FORCE | applied:", force, "scaled:", scaleForce, "mass:", mass);
+
   }
 
 
@@ -100,6 +104,8 @@ calculates the drag force that pushes opposite the direction of motion
   force.normalize();
   force.mult(strength);
   return force;
+  println("GRAV | r:", r, "strength:", strength, "force:", force);
+
   }
 
   /**
