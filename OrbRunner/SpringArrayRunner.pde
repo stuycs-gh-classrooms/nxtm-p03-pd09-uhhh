@@ -191,9 +191,14 @@ void applySprings()
 
     current.applyForce(force1);
     next.applyForce(force2);
-  }
-  println("SPRING | dist:", distance, "disp:", displacement, "force:", direction);
+     PVector diff = PVector.sub(next.center, current.center);// direction from one orb
+    float dist = diff.mag();//how far apart they are
+    float displacement = dist - SPRING_LENGTH;//stretched or compressed the string is
 
+ //   println("SPRING | dist:", dist, "disp:", displacement, "force:", force1);
+  
+
+}
 }//applySprings
 
 
