@@ -27,7 +27,7 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: Centripetal force
+#### Custom Force: Electro Static Force
 
 ### Custom Force Formula
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
@@ -94,6 +94,9 @@ simulate drag by slowing down each orb based on its velocity. The faster the orb
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
 Orbs with the same charges repel, oppsite attract. 
+Add charge
+Add getElectricForce()
+Add applyElectricForces()
 
 --- 
 
