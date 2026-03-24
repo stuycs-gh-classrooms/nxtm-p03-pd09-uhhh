@@ -96,10 +96,10 @@ calculates the drag force that pushes opposite the direction of motion
     //dont want to divide by 0!
     float r = max(center.dist(other.center), MIN_SIZE);
     strength = strength/ pow(r, 2);
-    PVector force = other.center.copy();
-    force.sub(center);
-    force.mult(strength);
-    return force;
+  PVector force = PVector.sub(other.center, center);// added a unit direction vector, then multiply by force
+  force.normalize();
+  force.mult(strength);
+  return force;
   }
 
   /**
