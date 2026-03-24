@@ -27,9 +27,11 @@
  ----------------------------------------------- */
 
 
-int NUM_ORBS = 15;
+int NUM_ORBS = 10;
 int MIN_SIZE = 10;
 int MAX_SIZE = 60;
+float MIN_CHARGE = 20;
+float MAX_CHARGE = 50;
 float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
@@ -99,7 +101,7 @@ void draw()
 
       if (toggles[ESTATIC]) {
         PVector ef = new PVector ();
-        for (int p = 1; p<orbCount; o++) {
+        for (int p = 1; p<orbCount; p++) {
           PVector es0 = orbs[o].getStatic(orbs[p-1], C_NUM);
           PVector es1 = orbs[o].getStatic(orbs[p-1], C_NUM);
           if (p==1) {
