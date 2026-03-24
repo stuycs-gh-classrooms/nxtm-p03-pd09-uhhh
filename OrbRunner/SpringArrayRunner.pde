@@ -34,6 +34,9 @@ float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
+float QC_COEF = 2;
+
+
 
 int SPRING_LENGTH = 50;
 float  SPRING_K = 0.005;
@@ -42,8 +45,10 @@ int MOVING = 0;
 int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
-boolean[] toggles = new boolean[4];
-String[] modes = {"Moving", "Bounce", "Gravity", "Drag"};
+int QC = 4;
+
+boolean[] toggles = new boolean[5];
+String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Electro Static"};
 
 FixedOrb earth;
 Orb[] orbs;
@@ -84,9 +89,9 @@ void draw()
     for (int o = 0; o < orbCount; o++) {
       if (toggles[GRAVITY]) {
         //PVector gf = new PVector(0, 0.3 * orbs[o].mass);// changed so that they fall down and not towards the fixed orb
-        PVector gf = orbs[o].getGravity(orbs[0],G_CONSTANT);
+        PVector gf = orbs[o].getGravity(orbs[0], G_CONSTANT);
         orbs[o].applyForce(gf);
-      } 
+      }
 
       if (toggles[DRAGF]) {
         PVector df = orbs[o].getDragForce(D_COEF);
@@ -197,7 +202,7 @@ void applySprings()
     float dist = diff.mag();//how far apart they are
     float displacement = dist - SPRING_LENGTH;//stretched or compressed the string is
 
-       println("SPRING | dist:", dist, "disp:", displacement, "force:", force1);
+    println("SPRING | dist:", dist, "disp:", displacement, "force:", force1);
   }
 }//applySprings
 
@@ -282,6 +287,13 @@ void keyPressed()
     }
   }
 
+  if (key == 'q') {
+    if (toggles[QC] == true) {
+      toggles [QC] = false;
+    } else {
+      toggles[QC] = true;
+    }
+  }
   if (key == '1') {
     makeOrbs(true);
   }
