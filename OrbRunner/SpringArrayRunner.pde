@@ -49,7 +49,7 @@ int DRAGF = 3;
 int ESTATIC = 4;
 
 boolean[] toggles = new boolean[5];
-String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Electro Static"};
+String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Electrostatic"};
 
 FixedOrb earth;
 Orb[] orbs;
@@ -244,6 +244,7 @@ void addOrb()
 
   float s = 30;
   float m = 50;
+  float e = 20;
   //place of last orb; I had it at random, but it sends all the orbs flying
   //sometimes it becomes
   Orb lastOrb = orbs[orbCount - 1];
@@ -302,7 +303,7 @@ void keyPressed()
     }
   }
 
-  if (key == 'q') {
+  if (key == 'e') {
     if (toggles[ESTATIC] == true) {
       toggles [ESTATIC] = false;
     } else {
