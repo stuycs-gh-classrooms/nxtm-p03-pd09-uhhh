@@ -33,10 +33,11 @@ makes an orb with a given position, size, and mass
 and/or
    WHY IT EXISTS
    */
-  Orb(float x, float y, float s, float m)
+  Orb(float x, float y, float s, float m, float e)
   {
     bsize = s;
     mass = m;
+    charge = e;
     center = new PVector(x, y);
     velocity = new PVector();
     acceleration = new PVector();
