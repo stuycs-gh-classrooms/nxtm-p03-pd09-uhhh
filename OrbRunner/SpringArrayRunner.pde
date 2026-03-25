@@ -30,14 +30,13 @@
 int NUM_ORBS = 10;
 int MIN_SIZE = 10;
 int MAX_SIZE = 60;
-float MIN_CHARGE = 20;
-float MAX_CHARGE = 50;
 float MIN_MASS = 10;
 float MAX_MASS = 100;
+float MIN_CHARGE = 20;
+float MAX_CHARGE = 50;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
 float C_NUM = 9;
-
 
 int SPRING_LENGTH = 50;
 float  SPRING_K = 0.005;
@@ -46,8 +45,7 @@ int MOVING = 0;
 int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
-int ESTATIC = 4;
-
+int ESTATIC = 4; 
 boolean[] toggles = new boolean[5];
 String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Electrostatic"};
 
@@ -63,7 +61,7 @@ void setup()
   //Part 0: Write makeOrbs below
   makeOrbs(true);
   //Part 3: create earth to simulate gravity
-  earth = new FixedOrb(width/2, height * 200, 1, 20000);
+  earth = new FixedOrb(width/2, height * 200, 1, 20000, 20);
 }//setup
 
 void draw()
@@ -90,29 +88,31 @@ void draw()
     for (int o = 0; o < orbCount; o++) {
       if (toggles[GRAVITY]) {
         //PVector gf = new PVector(0, 0.3 * orbs[o].mass);// changed so that they fall down and not towards the fixed orb
-        PVector gf = orbs[o].getGravity(orbs[0], G_CONSTANT);
+        PVector gf = orbs[o].getGravity(orbs[0],G_CONSTANT);
         orbs[o].applyForce(gf);
-      }
+      } 
 
       if (toggles[DRAGF]) {
         PVector df = orbs[o].getDragForce(D_COEF);
         orbs[o].applyForce(df);
       }
-
+      
       if (toggles[ESTATIC]) {
-        PVector ef = new PVector ();
-        for (int p = 1; p<orbCount; p++) {
-          PVector es0 = orbs[o].getStatic(orbs[p-1], C_NUM);
-          PVector es1 = orbs[o].getStatic(orbs[p-1], C_NUM);
-          if (p==1) {
-            ef = es0.add(es1);
-          }
-          ef = ef.add(es1);
-        }
-
-        orbs[o].applyForce(ef);
-      }
-    }//gravity, drag, electro static
+        //PVector ef = new PVector ();
+        //for (int p = 1; p < orbCount; p++) {
+        //  PVector es0 = orbs[o].getStatic(orbs[p-1],C_NUM);
+        //  PVector es1 = orbs[o].getStatic(orbs[p],C_NUM);
+        //  if (p==1) {
+          //  ef = es0.add(es1);
+          //}
+          //ef = ef.add(es1);
+      PVector ef = orbs[o].getStatic(orbs[0], C_NUM);
+      orbs[o].applyForce(ef);          
+        
+        
+        //orbs[o].applyForce(ef);
+      } 
+    }//gravity, drag
 
     for (int o = 0; o < orbCount; o++) {
       orbs[o].move(toggles[BOUNCE]);
@@ -144,15 +144,16 @@ void makeOrbs(boolean ordered)
   for (int i = 0; i < orbCount; i++) {
     float s = random(MIN_SIZE, MAX_SIZE);
     float m = random(MIN_MASS, MAX_MASS);
+    float e = random(MIN_CHARGE, MAX_CHARGE);
 
     if (ordered) {
       float x = 100 + i * SPRING_LENGTH;
       float y = height/2;
 
       if (i == 0) {
-        orbs[i] = new FixedOrb(x, y, s, m);
+        orbs[i] = new FixedOrb(x, y, s, m, e);
       } else {
-        orbs[i] = new Orb(x, y, s, m);
+        orbs[i] = new Orb(x, y, s, m, e);
       }
     } else {
       if (i == 0) {
@@ -217,7 +218,7 @@ void applySprings()
     float dist = diff.mag();//how far apart they are
     float displacement = dist - SPRING_LENGTH;//stretched or compressed the string is
 
-    println("SPRING | dist:", dist, "disp:", displacement, "force:", force1);
+       println("SPRING | dist:", dist, "disp:", displacement, "force:", force1);
   }
 }//applySprings
 
@@ -254,7 +255,7 @@ void addOrb()
 
 
   // adds new orb
-  newOrbs[orbCount] = new Orb(x, y, s, m);
+  newOrbs[orbCount] = new Orb(x, y, s, m, e);
 
   // switch to the new array
   orbs = newOrbs;
@@ -302,14 +303,15 @@ void keyPressed()
       toggles[DRAGF] = true;
     }
   }
-
+  
   if (key == 'e') {
     if (toggles[ESTATIC] == true) {
-      toggles [ESTATIC] = false;
+      toggles[ESTATIC] = false;
     } else {
       toggles[ESTATIC] = true;
     }
   }
+
   if (key == '1') {
     makeOrbs(true);
   }
@@ -321,11 +323,11 @@ void keyPressed()
 
 
   if (key == '-') {
-    orbCount--;
+    orbCount = orbCount - 1;
   }//removal
   if (key == '=' || key == '+') {
     //Part 4: Write addOrb() below
-    orbCount++;
+    addOrb();
   }//addition
 }//keyPressed
 
