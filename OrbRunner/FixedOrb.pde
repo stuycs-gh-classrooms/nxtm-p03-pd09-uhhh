@@ -5,9 +5,9 @@ class FixedOrb extends Orb
    makes a fixed orb at a given position, size, and mass.
     exists so one orb can stay in place while the others move.
    */
-  FixedOrb(float x, float y, float s, float m)
+  FixedOrb(float x, float y, float s, float m, float e)
   {
-    super(x, y, s, m);
+    super(x, y, s, m, e);
     c = color(255, 0, 0);
   }
 
